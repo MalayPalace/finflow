@@ -1,0 +1,212 @@
+.sidebar {
+  width: var(--nav-width-expanded);
+  min-height: 100vh;
+  background: var(--gradient-nav);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  transition: width var(--transition-slow);
+  z-index: 100;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+.sidebar.collapsed {
+  width: var(--nav-width-collapsed);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 16px 16px;
+  min-height: 68px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.brandName {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #f5f0e8;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity var(--transition-normal);
+}
+
+.collapsed .brandName {
+  opacity: 0;
+  width: 0;
+}
+
+.collapseBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.60);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.collapseBtn:hover {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border-color: rgba(255,255,255,0.20);
+}
+
+/* Section label */
+.sectionLabel {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.30);
+  padding: 16px 20px 6px;
+}
+
+/* Nav */
+.nav {
+  flex: 1;
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 10px;
+  border-radius: var(--radius-md);
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.navItem:hover {
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.85);
+}
+
+.navItem.active {
+  background: linear-gradient(135deg, rgba(200,137,42,0.25), rgba(200,137,42,0.12));
+  color: #f0c870;
+  border: 1px solid rgba(200,137,42,0.25);
+}
+
+.navItem.active .iconWrap {
+  color: #c8892a;
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.05);
+  transition: background var(--transition-fast);
+}
+
+.navItem:hover .iconWrap {
+  background: rgba(255,255,255,0.08);
+}
+
+.navItem.active .iconWrap {
+  background: rgba(200,137,42,0.18);
+}
+
+.navLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navArrow {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.20);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.navItem.active .navArrow {
+  color: rgba(200,137,42,0.50);
+  transform: translateX(2px);
+}
+
+/* Footer */
+.footer {
+  padding: 16px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footerText {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.20);
+  text-align: center;
+}
+
+/* Backdrop for mobile */
+.backdrop {
+  display: none;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100dvh;
+    transform: translateX(-100%);
+    transition: transform var(--transition-slow), width var(--transition-slow);
+    width: var(--nav-width-expanded) !important;
+    z-index: 200;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .sidebar.mobileOpen {
+    transform: translateX(0);
+  }
+
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,8,6,0.55);
+    backdrop-filter: blur(2px);
+    z-index: 199;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .collapseBtn {
+    display: none;
+  }
+}
