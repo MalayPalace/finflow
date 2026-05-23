@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useXIRR } from '../../hooks/useXIRR'
 import CashflowTable from './CashflowTable'
 import ResultCard from './ResultCard'
 import SummaryStats from './SummaryStats'
+import { saveElementAsImage } from '../../utils/saveAsImage'
 import styles from './XIRRPage.module.css'
 
 export default function XIRRPage() {
   const xirr = useXIRR()
+  const captureRef = useRef(null)
+
+  const handleSave = async () => {
+    if (captureRef.current) {
+      await saveElementAsImage(captureRef.current, 'xirr')
+    }
+  }
 
   return (
     <div className={styles.page}>
@@ -19,6 +27,14 @@ export default function XIRRPage() {
           </p>
         </div>
         <div className={styles.headerActions}>
+          <button
+            className={styles.btnSave}
+            onClick={handleSave}
+            disabled={!xirr.calculated}
+            title="Download XIRR result as image"
+          >
+            💾 Save
+          </button>
           <button className={styles.btnSecondary} onClick={xirr.loadExample}>
             Load Example
           </button>
@@ -29,43 +45,45 @@ export default function XIRRPage() {
       </div>
 
       {/* Summary stats */}
-      <SummaryStats stats={xirr.stats} />
+      <div ref={captureRef} className={styles.captureContainer}>
+        <SummaryStats stats={xirr.stats} />
 
-      {/* Result */}
-      {(xirr.calculated || xirr.errors.length > 0) && (
-        <ResultCard
-          result={xirr.result}
-          formatted={xirr.formattedResult}
-          errors={xirr.errors}
-        />
-      )}
+        {/* Result */}
+        {(xirr.calculated || xirr.errors.length > 0) && (
+          <ResultCard
+            result={xirr.result}
+            formatted={xirr.formattedResult}
+            errors={xirr.errors}
+          />
+        )}
 
-      {/* Cashflow input */}
-      <div className={styles.card}>
-        <div className={styles.cardHeader}>
-          <div>
-            <h2 className={styles.cardTitle}>Cashflows</h2>
-            <p className={styles.cardHint}>
-              Use negative amounts for investments (outflows) and positive for returns (inflows).
-              Supported date formats: <code>YYYY-MM-DD</code>, <code>DD/MM/YYYY</code>
-            </p>
+        {/* Cashflows section */}
+        <div className={styles.captureCard}>
+          <div className={styles.captureCardHeader}>
+            <div>
+              <h2 className={styles.captureCardTitle}>Cashflows</h2>
+              <p className={styles.cardHint}>
+                Use negative amounts for investments (outflows) and positive for returns (inflows).
+                Supported date formats: <code>YYYY-MM-DD</code>, <code>DD/MM/YYYY</code>
+              </p>
+            </div>
+            <button className={styles.btnAdd} onClick={xirr.addRow} title="Add row">
+              <span>+</span> Add Row
+            </button>
           </div>
-          <button className={styles.btnAdd} onClick={xirr.addRow} title="Add row">
-            <span>+</span> Add Row
-          </button>
-        </div>
 
-        <CashflowTable
-          rows={xirr.rows}
-          onUpdate={xirr.updateRow}
-          onRemove={xirr.removeRow}
-        />
+          <CashflowTable
+            rows={xirr.rows}
+            onUpdate={xirr.updateRow}
+            onRemove={xirr.removeRow}
+          />
 
-        <div className={styles.actions}>
-          <button className={styles.btnCalculate} onClick={xirr.calculate}>
-            <span className={styles.btnCalcIcon}>⟳</span>
-            Calculate XIRR
-          </button>
+          <div className={styles.actions}>
+            <button className={styles.btnCalculate} onClick={xirr.calculate}>
+              <span className={styles.btnCalcIcon}>⟳</span>
+              Calculate XIRR
+            </button>
+          </div>
         </div>
       </div>
 
