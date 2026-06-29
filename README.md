@@ -1,6 +1,11 @@
 # FinFlow — Investment Analytics
 React frontend for financial calculations and charts
 
+## Features
+
+- **XIRR Calculator**: Calculate the Extended Internal Rate of Return for investments with irregular cash flows.
+- **Average Chart**: Paste lists of numbers or currency values to visualize the series, along with a moving average and the overall mean. Features automatic delimiter detection and chart exporting.
+
 ## Stack
 
 - **React 18** — UI
