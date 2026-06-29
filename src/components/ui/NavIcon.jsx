@@ -7,6 +7,12 @@ const icons = {
       <polyline points="16 7 22 7 22 13" />
     </svg>
   ),
+  avgChart: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="2 18 7 11 11 15 16 8 22 12" />
+      <line x1="2" y1="14" x2="22" y2="14" strokeDasharray="3 2" strokeWidth="1.3" />
+    </svg>
+  ),
   portfolio: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <rect x="2" y="7" width="20" height="14" rx="2" />

@@ -1,0 +1,160 @@
+/* ─── AverageChartPage ─────────────────────────────────────────── */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-ink-1);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: var(--color-ink-3);
+  margin-top: 4px;
+  max-width: 480px;
+}
+
+.headerActions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btnSave {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-ink-2);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.btnSave:hover:not(:disabled) {
+  background: var(--color-surface-2);
+  border-color: var(--color-accent);
+  color: var(--color-accent-deep);
+}
+.btnSave:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btnGhost {
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--color-ink-3);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+.btnGhost:hover {
+  background: var(--color-danger-bg);
+  color: var(--color-danger);
+}
+
+/* Capture wrapper (for save-as-image) */
+.captureContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  margin-bottom: 24px;
+}
+
+/* Sequential layout: input on top, chart below */
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Info box */
+.infoBox {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.infoSummary {
+  padding: 14px 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-ink-2);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.infoSummary::-webkit-details-marker { display: none; }
+.infoSummary::before {
+  content: '▸';
+  font-size: 0.75rem;
+  color: var(--color-ink-4);
+  transition: transform var(--transition-fast);
+}
+details[open] .infoSummary::before { transform: rotate(90deg); }
+
+.infoBody {
+  padding: 0 20px 18px;
+  font-size: 0.85rem;
+  color: var(--color-ink-2);
+  line-height: 1.7;
+  border-top: 1px solid var(--color-border-soft);
+}
+.infoBody p { margin-bottom: 8px; }
+.infoBody ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.infoBody ul li::before {
+  content: '→ ';
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .title { font-size: 1.55rem; }
+  .header { margin-bottom: 18px; }
+  .captureContainer { padding: 16px; }
+}

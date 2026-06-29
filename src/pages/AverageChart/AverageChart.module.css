@@ -1,0 +1,100 @@
+/* ─── AverageChart wrapper ─────────────────────────────────────── */
+
+.chartCard {
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.chartHeader {
+  padding: 18px 22px 14px;
+  border-bottom: 1px solid var(--color-border-soft);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.chartTitle {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--color-ink-1);
+  letter-spacing: -0.01em;
+}
+
+.chartSubtitle {
+  font-size: 0.76rem;
+  color: var(--color-ink-3);
+  margin-top: 3px;
+}
+
+/* Legend chips */
+.legendRow {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--color-ink-2);
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legendLine {
+  width: 18px;
+  height: 2px;
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+
+.legendDash {
+  width: 18px;
+  border-top: 2px dashed;
+  flex-shrink: 0;
+}
+
+/* Chart body */
+.chartBody {
+  padding: 16px 8px 8px;
+  min-height: 320px;
+}
+
+/* Empty state */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  gap: 12px;
+  color: var(--color-ink-4);
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  opacity: 0.4;
+}
+
+.emptyText {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-ink-4);
+}

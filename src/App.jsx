@@ -2,6 +2,7 @@ import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import AppLayout from './components/layout/AppLayout'
 import XIRRPage from './pages/XIRR/XIRRPage'
+import AverageChartPage from './pages/AverageChart/AverageChartPage'
 
 // Route registry — add new pages here
 export const NAV_ROUTES = [
@@ -11,9 +12,12 @@ export const NAV_ROUTES = [
     icon: 'xirr',
     element: <XIRRPage />,
   },
-  // Example of how to add future routes:
-  // { path: '/portfolio', label: 'Portfolio', icon: 'portfolio', element: <PortfolioPage /> },
-  // { path: '/sip',       label: 'SIP Planner', icon: 'sip',       element: <SIPPage /> },
+  {
+    path: '/avg-chart',
+    label: 'Average Chart',
+    icon: 'avgChart',
+    element: <AverageChartPage />,
+  },
 ]
 
 export default function App() {
