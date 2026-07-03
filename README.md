@@ -32,7 +32,7 @@ npm install
 npm run dev
 ```
 
-Opens at `http://localhost:3000` with Hot Module Replacement active.
+Opens at `http://localhost:3000/finflow/` with Hot Module Replacement active.
 
 ### Production Build
 
@@ -71,7 +71,7 @@ server {
   index index.html;
 
   location / {
-    try_files $uri $uri/ /index.html;
+    try_files $uri $uri/ finflow/index.html;
   }
 }
 ```

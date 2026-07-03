@@ -15,7 +15,8 @@
     "react": "^18.2.0",
     "react-chartjs-2": "^5.3.1",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.0"
+    "react-router-dom": "^6.22.0",
+    "terser": "^5.48.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
