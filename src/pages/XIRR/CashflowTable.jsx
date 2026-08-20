@@ -1,4 +1,5 @@
-import React, { useRef } from 'react'
+import React from 'react'
+import DatePickerInput from '../../components/ui/DatePickerInput'
 import styles from './CashflowTable.module.css'
 
 function AmountBadge({ value }) {
@@ -29,14 +30,12 @@ export default function CashflowTable({ rows, onUpdate, onRemove }) {
           {rows.map((row, idx) => (
             <tr key={row.id} className={styles.row}>
               <td className={styles.tdNum}>{idx + 1}</td>
-              <td>
-                <input
-                  className={styles.input}
-                  type="text"
-                  placeholder="YYYY-MM-DD"
+              <td className={styles.tdDate}>
+                <DatePickerInput
+                  id={`date-${row.id}`}
                   value={row.date}
-                  onChange={e => onUpdate(row.id, 'date', e.target.value)}
-                  aria-label={`Date for row ${idx + 1}`}
+                  onChange={(val) => onUpdate(row.id, 'date', val)}
+                  ariaLabel={`Date for row ${idx + 1}`}
                 />
               </td>
               <td>
@@ -88,12 +87,11 @@ export default function CashflowTable({ rows, onUpdate, onRemove }) {
             <div className={styles.mobileFields}>
               <div className={styles.field}>
                 <label className={styles.fieldLabel}>Date</label>
-                <input
-                  className={styles.input}
-                  type="text"
-                  placeholder="YYYY-MM-DD"
+                <DatePickerInput
+                  id={`date-mob-${row.id}`}
                   value={row.date}
-                  onChange={e => onUpdate(row.id, 'date', e.target.value)}
+                  onChange={(val) => onUpdate(row.id, 'date', val)}
+                  ariaLabel={`Date for row ${idx + 1}`}
                 />
               </div>
               <div className={styles.field}>

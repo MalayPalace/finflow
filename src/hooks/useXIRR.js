@@ -1,7 +1,8 @@
 import { useState, useCallback, useMemo } from 'react'
 import { calculateXIRR, parseDate, validateCashflows, formatPercent } from '../utils/xirr'
 
-const EMPTY_ROW = () => ({ id: crypto.randomUUID(), date: '', amount: '' })
+const todayISO = () => new Date().toISOString().slice(0, 10)
+const EMPTY_ROW = () => ({ id: crypto.randomUUID(), date: todayISO(), amount: '' })
 
 const DEFAULT_ROWS = [
   { id: crypto.randomUUID(), date: '2023-01-01', amount: '-100000' },

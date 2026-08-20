@@ -1,0 +1,225 @@
+/* ─── DatePickerInput ────────────────────────────────────────────────────── */
+
+.root {
+  width: 100%;
+}
+
+/* Text input wrapper */
+.inputWrap {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  overflow: hidden;
+}
+
+.inputWrap:focus-within {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(200, 137, 42, 0.12);
+}
+
+.inputWrapError {
+  border-color: var(--color-danger) !important;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.10) !important;
+}
+
+.textInput {
+  flex: 1;
+  padding: 8px 10px;
+  border: none;
+  background: transparent;
+  color: var(--color-ink-1);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  outline: none;
+  min-width: 0;
+}
+
+.textInput::placeholder {
+  color: var(--color-ink-4);
+}
+
+/* Calendar toggle button */
+.calBtn {
+  padding: 0 10px;
+  border: none;
+  border-left: 1px solid var(--color-border-soft);
+  background: transparent;
+  color: var(--color-ink-3);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-height: 36px;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.calBtn:hover {
+  background: var(--color-surface-2);
+  color: var(--color-accent);
+}
+
+/* Inline error */
+.errorMsg {
+  font-size: 0.72rem;
+  color: var(--color-danger);
+  margin-top: 4px;
+  padding-left: 2px;
+}
+
+/* ─── Calendar dropdown ─── */
+.calendar {
+  /* position/top/left/z-index are applied inline by the portal */
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  width: 270px;
+  animation: fadeIn 0.15s ease both;
+  overflow: hidden;
+}
+
+/* Header: prev / selects / next */
+.calHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px 8px;
+  border-bottom: 1px solid var(--color-border-soft);
+  gap: 4px;
+}
+
+.navBtn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-ink-3);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.navBtn:hover {
+  background: var(--color-surface-2);
+  color: var(--color-ink-1);
+  border-color: var(--color-accent);
+}
+
+.calNavCenter {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+}
+
+.jumpSelect {
+  padding: 4px 6px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-ink-1);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--transition-fast);
+  max-width: 100px;
+}
+
+.jumpSelect:focus {
+  border-color: var(--color-accent);
+}
+
+/* Day-of-week row */
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 8px 10px 4px;
+  gap: 2px;
+}
+
+.weekday {
+  text-align: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-3);
+  text-transform: uppercase;
+}
+
+/* Day grid */
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 2px 10px 8px;
+  gap: 2px;
+}
+
+.day {
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-ink-1);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.day:hover {
+  background: var(--color-accent-light);
+  color: var(--color-accent-deep);
+}
+
+.dayToday {
+  font-weight: 700;
+  color: var(--color-accent);
+  background: var(--color-accent-pale);
+}
+
+.daySelected {
+  background: var(--color-accent) !important;
+  color: #fff !important;
+  font-weight: 700;
+}
+
+/* Footer */
+.calFooter {
+  padding: 8px 10px 10px;
+  border-top: 1px solid var(--color-border-soft);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.todayBtn {
+  padding: 5px 12px;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-accent-deep);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.todayBtn:hover {
+  background: var(--color-accent);
+  color: #fff;
+}

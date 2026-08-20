@@ -103,6 +103,12 @@
   gap: 20px;
 }
 
+.chartsColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
 /* Info box */
 .infoBox {
   background: var(--color-surface);

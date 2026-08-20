@@ -1,6 +1,7 @@
 import React, { useState, useMemo, useRef } from 'react'
 import InputPanel from './InputPanel'
 import AverageChart from './AverageChart'
+import GrowthChart from './GrowthChart'
 import StatsStrip from './StatsStrip'
 import { parseInput, movingAverage, computeStats } from '../../utils/parseNumbers'
 import { saveElementAsImage } from '../../utils/saveAsImage'
@@ -103,12 +104,19 @@ export default function AverageChartPage() {
             onPlot={handlePlot}
           />
 
-          <AverageChart
-            values={committedValues}
-            maValues={maValues}
-            average={average}
-            maWindow={committedMaWindow}
-          />
+          <div className={styles.chartsColumn}>
+            <AverageChart
+              values={committedValues}
+              maValues={maValues}
+              average={average}
+              maWindow={committedMaWindow}
+            />
+            
+            <GrowthChart
+              values={committedValues}
+              maWindow={committedMaWindow}
+            />
+          </div>
         </div>
       </div>
 
