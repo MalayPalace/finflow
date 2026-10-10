@@ -90,12 +90,19 @@ body {
   background-attachment: fixed;
   color: var(--color-ink-1);
   min-height: 100vh;
+  min-height: 100dvh;
   line-height: 1.6;
+  /* Enable smooth momentum scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
 }
 
 #root {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
+  /* Respect notch / home-indicator safe areas in PWA standalone mode */
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* Scrollbar */

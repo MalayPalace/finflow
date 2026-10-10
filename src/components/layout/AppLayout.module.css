@@ -28,5 +28,7 @@
 @media (max-width: 768px) {
   .pageContent {
     padding: 20px 16px 40px;
+    /* Extra bottom padding for home-indicator on iOS */
+    padding-bottom: max(40px, env(safe-area-inset-bottom, 40px));
   }
 }

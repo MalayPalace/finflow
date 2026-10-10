@@ -175,9 +175,10 @@
     flex: 1;
   }
 
+  /* Single column by default — prevents squeezing on narrow Android screens */
   .mobileFields {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
   }
 
@@ -189,5 +190,13 @@
     text-transform: uppercase;
     letter-spacing: 0.07em;
     color: var(--color-ink-3);
+  }
+}
+
+/* Two-column layout only when there's enough room (≥ 480px, inside mobile breakpoint) */
+@media (min-width: 480px) and (max-width: 600px) {
+  .mobileFields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 }
